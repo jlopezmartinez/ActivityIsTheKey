@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.adidas.activityisthekey.StatusFragment"
+    android:padding="16dp">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.lalongooo.Rings
+            android:id="@+id/rings"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            app:rings_inner_first_text="@string/ring_walking"
+            app:rings_inner_second_text="@string/ring_running"
+            app:rings_inner_third_text="@string/ring_bike"
+            app:rings_overall_text="@string/ring_progress"/>
+
+
+    </FrameLayout>
+
+</FrameLayout>

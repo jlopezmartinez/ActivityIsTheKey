@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ActivityIsTheKey</string>
+    <string name="alert_permission_location_needed">Need acces to your location to work</string>
+    <string name="alert_permission_location_positive_button">I give my permission</string>
+    <string name="alert_permission_location_negative_button">No way</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ring_walking">walking</string>
+    <string name="ring_running">Run</string>
+    <string name="ring_bike">Bike</string>
+    <string name="activity_walking">Walking</string>
+    <string name="activity_running">Running</string>
+    <string name="activity_biking">Biking</string>
+    <string name="ring_progress">Overall</string>
+</resources>
