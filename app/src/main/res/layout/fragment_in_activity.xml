@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context="com.adidas.activityisthekey.InActivityFragment">
+    tools:context="com.adidas.activityisthekey.inActivity.InActivityFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
@@ -16,12 +17,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textSize="60sp"
+            android:textColor="#fff"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
             tools:text="@string/activity_walking" />
 
         <TextView
             android:id="@+id/timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="60sp"
+            android:textColor="#fff"
+            android:fontFamily="sans-serif"
             tools:text="20s"/>
 
     </LinearLayout>

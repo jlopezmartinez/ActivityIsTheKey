@@ -11,13 +11,25 @@
         android:theme="@style/AppTheme"
         >
         <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+           android:screenOrientation="portrait">
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+       </activity>
+
+
+       <!--<activity android:name=".debug.AlternateActivity"
+           android:theme="@style/AppTheme.NoActionBar">
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+       </activity>
+       -->
+
 
         <meta-data
             android:name="com.google.android.awareness.API_KEY"

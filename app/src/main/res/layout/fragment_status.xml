@@ -3,26 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.adidas.activityisthekey.StatusFragment"
+    tools:context="com.adidas.activityisthekey.status.StatusFragment"
     android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center">
 
-        <com.lalongooo.Rings
-            android:id="@+id/rings"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            app:rings_inner_first_text="@string/ring_walking"
-            app:rings_inner_second_text="@string/ring_running"
-            app:rings_inner_third_text="@string/ring_bike"
-            app:rings_overall_text="@string/ring_progress"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_activity"
+            android:textSize="24sp"
+            android:textColor="#000"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="8dp"/>
 
+        <ProgressBar
+            android:id="@+id/progress"
+            android:padding="8dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
 
-    </FrameLayout>
+    </LinearLayout>
 
 </FrameLayout>

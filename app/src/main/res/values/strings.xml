@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ActivityIsTheKey</string>
+    <string name="app_name">Activity is the key</string>
     <string name="alert_permission_location_needed">Need acces to your location to work</string>
     <string name="alert_permission_location_positive_button">I give my permission</string>
     <string name="alert_permission_location_negative_button">No way</string>
@@ -13,4 +13,10 @@
     <string name="activity_running">Running</string>
     <string name="activity_biking">Biking</string>
     <string name="ring_progress">Overall</string>
+    <string name="extra">Extra</string>
+    <string name="error_unknown">Unknown error</string>
+    <string name="error_init">Error iniciating app</string>
+    <string name="error_permissions">No needed permissions granted</string>
+    <string name="error_button">Retry</string>
+    <string name="status_activity">Current activtity</string>
 </resources>

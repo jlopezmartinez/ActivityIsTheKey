@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="walking_arc">#e8594c</color>
     <color name="walking_indicator" >#EB7266</color>
+    <color name="walking">#e8594c</color>
+    <color name="running">#F9E670</color>
+    <color name="biking">#57C5C7</color>
 </resources>

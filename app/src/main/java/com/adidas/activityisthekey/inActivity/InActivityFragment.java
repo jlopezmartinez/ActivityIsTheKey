@@ -1,4 +1,4 @@
-package com.adidas.activityisthekey;
+package com.adidas.activityisthekey.inActivity;
 
 
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.adidas.activityisthekey.R;
+
 
 /**
  * Display indicator of the current actiivty being done
@@ -18,7 +20,7 @@ import android.widget.TextView;
 public class InActivityFragment extends Fragment {
 
     public interface OnInActivtyFragmentListener {
-        void onMaxReached(int max);
+        void onMaxReached(int userActivity, long max);
     }
 
     private static final String ARG_CURRENT_SECS = "current";
@@ -30,8 +32,8 @@ public class InActivityFragment extends Fragment {
     public static final int ACT_BIKE = 3;
 
     private int mActivityKind;
-    private int mCurrentSecs;
-    private int mMaxSecs;
+    private long mCurrentMillis;
+    private long mMaxMillis;
     private OnInActivtyFragmentListener mListener;
 
     private TextView mActivityView;
@@ -39,12 +41,12 @@ public class InActivityFragment extends Fragment {
     private CountDownTimer mCountrDownTimer;
 
 
-    public static Fragment newInstance(int activityKind, int currentSecs, int maxSecs) {
+    public static Fragment newInstance(int activityKind, long currentSecs, long maxSecs) {
         InActivityFragment fr = new InActivityFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_ACTIVITY_KIND, activityKind);
-        args.putSerializable(ARG_CURRENT_SECS, currentSecs);
-        args.putInt(ARG_MAX_SECS, maxSecs);
+        args.putLong(ARG_CURRENT_SECS, currentSecs);
+        args.putLong(ARG_MAX_SECS, maxSecs);
         fr.setArguments(args);
 
         return fr;
@@ -52,6 +54,15 @@ public class InActivityFragment extends Fragment {
 
     public InActivityFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mActivityKind = getArguments().getInt(ARG_ACTIVITY_KIND);
+        mCurrentMillis = getArguments().getLong(ARG_CURRENT_SECS);
+        mMaxMillis = getArguments().getLong(ARG_MAX_SECS);
     }
 
     @Override
@@ -63,15 +74,6 @@ public class InActivityFragment extends Fragment {
         } else {
             throw new RuntimeException("parent activity must implement OnInActiivtyFragmentListener");
         }
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        mActivityKind = getArguments().getInt(ARG_ACTIVITY_KIND);
-        mCurrentSecs = getArguments().getInt(ARG_CURRENT_SECS);
-        mMaxSecs = getArguments().getInt(ARG_MAX_SECS);
     }
 
     @Override
@@ -90,12 +92,15 @@ public class InActivityFragment extends Fragment {
         switch (mActivityKind) {
             case ACT_WALK:
                 mActivityView.setText(R.string.activity_walking);
+                view.setBackgroundColor(getResources().getColor(R.color.walking));
                 break;
             case ACT_RUN:
                 mActivityView.setText(R.string.activity_running);
+                view.setBackgroundColor(getResources().getColor(R.color.running));
                 break;
             case ACT_BIKE:
                 mActivityView.setText(R.string.activity_biking);
+                view.setBackgroundColor(getResources().getColor(R.color.biking));
                 break;
         }
 
@@ -105,18 +110,18 @@ public class InActivityFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        mCountrDownTimer = new CountDownTimer(mMaxSecs - mCurrentSecs, 1000) {
+        mCountrDownTimer = new CountDownTimer((mMaxMillis - mCurrentMillis) , 1000) {
 
-            int secsLeft = mMaxSecs - mCurrentSecs;
+            long secsLeft = (mMaxMillis - mCurrentMillis)/1000;
             public void onTick(long millisUntilFinished) {
-                secsLeft = secsLeft > 0?secsLeft--:0;
-                mTimerView.setText("left secs: " + secsLeft);
+                secsLeft = secsLeft > 0?secsLeft-1:0;
+                mTimerView.setText("" + secsLeft);
 
             }
 
             public void onFinish() {
                 //finished, notify activity
-                mListener.onMaxReached(mMaxSecs);
+                mListener.onMaxReached(mActivityKind, mMaxMillis);
             }
 
         }.start();
